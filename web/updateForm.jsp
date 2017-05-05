@@ -2,7 +2,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="model.Customers"%>
-<% Customers customers = (Customers) request.getAttribute("customer"); %>
+<% Customers customers = (Customers) request.getAttribute("customers"); %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,7 +16,7 @@
             <table class="update">
                 <tr>
                      <td class="right">Customer ID:</td>
-                     <td><input type="text" name="id" value="<%= customers.getCustID() %>" /></td>
+                     <td><input type="text" name="id" value="<%= customers.getCustID() %>" readonly /></td>
                 </tr>
                  <tr>
                      <td class="right">First Name:</td>
@@ -53,7 +53,7 @@
             </table>
                 <br>
                 <input type="reset" name="reset" value="Clear" />
-                <input type="submit" name="submit" value="Submit" />
+                <input type="submit" name="submit" value="Update" />
     
             
     </body>
