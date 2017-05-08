@@ -58,10 +58,10 @@ public SearchQuery() {
 public void doSearch(String firstName){
         
     try {
-        String query = "SELECT * FROM Customers WHERE firstName LIKE ?";
+        String query = "SELECT * FROM Customers WHERE UPPER (firstName) LIKE ? ORDER BY custID ASC";
         
         PreparedStatement ps = conn.prepareStatement(query);
-        ps.setString(1, "%" + firstName + "%");
+        ps.setString(1, "%" + firstName.toUpperCase() + "%");
         this.results = ps.executeQuery();
     } catch (SQLException ex) {
         Logger.getLogger(SearchQuery.class.getName()).log(Level.SEVERE, null, ex);
@@ -71,7 +71,7 @@ public void doSearch(String firstName){
     }
 
 
- public String getHTMLTable(){
+ public String getHTMLTable() throws SQLException{
 
     String table = "";
     table += "<table>";

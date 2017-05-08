@@ -48,36 +48,66 @@ public class ReadQuery {
             Logger.getLogger(ReadQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    
-    
-        public void doRead(){
-    
-        
+
+    public void doRead() {
+
         try {
             String query = "Select * from Customers";
-            
+
             PreparedStatement ps = conn.prepareStatement(query);
             this.results = ps.executeQuery();
-        
+
         } catch (SQLException ex) {
             Logger.getLogger(ReadQuery.class.getName()).log(Level.SEVERE, null, ex);
-       
-        
-        
-       }
-        
-        
-    }
-        
-            public String getHTMLTable(){
 
-    String table = "";
-    table += "<table>";
+        }
+
+    }
+
+    public String getHTMLTable() {
+
+        String table = "";
+        table += "<table>";
         
-        try {
-            while(this.results.next()){
+                table += "<th>";
+                table += "Customer ID";
+                table += "</th>";
                 
+                table += "<th>";
+                table += "First Name";
+                table += "</th>";
+                
+                table += "<th>";
+                table += "Last Name";
+                table += "</th>";
+                
+                table += "<th>";
+                table += "Address 1";
+                table += "</th>";
+                
+                table += "<th>";
+                table += "Address 2";
+                table += "</th>";
+                
+                table += "<th>";
+                table += "City";
+                table += "</th>";
+                
+                table += "<th>";
+                table += "State";
+                table += "</th>";
+                
+                table += "<th>";
+                table += "Zip Code";
+                table += "</th>";
+                
+                table += "<th>";
+                table += "E-Mail";
+                table += "</th>";
+
+        try {
+            while (this.results.next()) {
+
                 Customers customers = new Customers();
                 customers.setCustID(this.results.getInt("custID"));
                 customers.setFirstName(this.results.getString("firstName"));
@@ -88,69 +118,60 @@ public class ReadQuery {
                 customers.setState(this.results.getString("state"));
                 customers.setZip(this.results.getString("zip"));
                 customers.setEmailAddr(this.results.getString("emailAddr"));
-                
-                
-                
+
                 table += "<tr>";
-                
-            
-                
+
+              
+               
                 table += "<td>";
                 table += customers.getCustID();
                 table += "</td>";
-                
+
                 table += "<td>";
                 table += customers.getFirstName();
                 table += "</td>";
-                
+
                 table += "<td>";
                 table += customers.getLastName();
                 table += "</td>";
-                
+
                 table += "<td>";
                 table += customers.getAddr1();
                 table += "</td>";
-                
+
                 table += "<td>";
                 table += customers.getAddr2();
                 table += "</td>";
-                
+
                 table += "<td>";
                 table += customers.getCity();
                 table += "</td>";
-                
+
                 table += "<td>";
                 table += customers.getState();
                 table += "</td>";
-                
+
                 table += "<td>";
                 table += customers.getZip();
                 table += "</td>";
-                
+
                 table += "<td>";
                 table += customers.getEmailAddr();
                 table += "</td>";
-                
+
                 table += "<td>";
-                table += "<a href=update?custID=" +customers.getCustID() + ">Update </a>" +  "<a href=delete?custID=" + customers.getCustID() + ">Delete </a>";
+                table += "<a href=update?custID=" + customers.getCustID() + ">Update </a>" + "<a href=delete?custID=" + customers.getCustID() + ">Delete </a>";
                 table += "</td>";
-                
-                
-                
-                
-               
-                
+
                 table += "</tr>";
-                
-                
-                
-                
-            }   } catch (SQLException ex) {
+
+            }
+        } catch (SQLException ex) {
             Logger.getLogger(ReadQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
-    table += "</table>";
-            
-            return table;
-    }      
+        table += "</table>";
+
+        return table;
+    }
 
 }

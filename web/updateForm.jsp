@@ -7,9 +7,18 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="css/stylesheet.css">
         <title>Update A Customer</title>
     </head>
     <body>
+               <div class="wrap">
+
+            <%@ include file="includes/header.jsp" %>
+
+
+            <%@ include file="includes/menu.jsp" %>
+
+            <div class="main">
         <h1>Update A Customer</h1>
         <form name="updateForm" action="updateCustomer" method="get">
            
@@ -54,7 +63,10 @@
                 <br>
                 <input type="reset" name="reset" value="Clear" />
                 <input type="submit" name="submit" value="Update" />
-    
+          </div>
+
+            <%@ include file="includes/footer.jsp" %>
+        </div>
             
     </body>
 </html>

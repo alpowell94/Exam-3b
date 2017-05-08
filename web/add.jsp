@@ -10,8 +10,17 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Add A Customer</title>
+        <link rel="stylesheet" href="css/stylesheet.css">
     </head>
     <body>
+               <div class="wrap">
+
+            <%@ include file="includes/header.jsp" %>
+
+
+            <%@ include file="includes/menu.jsp" %>
+
+            <div class="main">
         <h1>Add A Customer</h1>
         
         <form name="addForm" action="addCustomer" method="get">
@@ -49,7 +58,10 @@
     
         </form>
     
-    
+          </div>
+
+            <%@ include file="includes/footer.jsp" %>
+        </div>
     </body>
     
     
